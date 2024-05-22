@@ -24,7 +24,7 @@ public class MemberEntity {
     @Column
     private String memberName;
 
-    public static MemberEntity toMemberEntity(MemberDTO memberDTO){
+        public static MemberEntity toMemberEntity(MemberDTO memberDTO){
         MemberEntity memberEntity = new MemberEntity();
         memberEntity.setId(memberDTO.getId());
         memberEntity.setMemberEmail(memberDTO.getMemberEmail());

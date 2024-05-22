@@ -5,9 +5,12 @@ import com.example.spring_study_db.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -45,4 +48,12 @@ public class MemberController {
             return "login";
         }
     }
+    @GetMapping("/member/")
+    public String findAll(Model model){
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        // 어떠한 html로 가져갈 데이터가 있다면 model 사용
+        model.addAttribute("memberList", memberDTOList);
+        return "list";
+    }
+
 }
