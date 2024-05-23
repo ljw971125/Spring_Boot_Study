@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -55,5 +56,19 @@ public class MemberController {
         model.addAttribute("memberList", memberDTOList);
         return "list";
     }
+    // 조회
+    @GetMapping("/member/{id}")
+    public String findById(@PathVariable Long id, Model model){
+        MemberDTO memberDTO = memberService.findById(id);
+        // login 처럼 return 값에 따라 분류 할 수 있음
+        model.addAttribute("member", memberDTO);
+        return "detail";
+    }
+    // 삭제
+    @GetMapping("/member/delete/{id}")
+    public String deleteById(@PathVariable Long id){
+        memberService.deleteByid(id);
 
+        return "redirect:/member/";
+    }
 }
