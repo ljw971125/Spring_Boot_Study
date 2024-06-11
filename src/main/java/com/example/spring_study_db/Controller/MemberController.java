@@ -4,15 +4,13 @@ import com.example.spring_study_db.dto.MemberDTO;
 import com.example.spring_study_db.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -70,5 +68,11 @@ public class MemberController {
         memberService.deleteByid(id);
 
         return "redirect:/member/";
+    }
+    @GetMapping("/video/")
+    public String videoIndex(Model model) {
+        log.debug("************** class = {}, function = {}", this.getClass().getName(), new Object(){}.getClass().getEnclosingMethod().getName());
+        model.addAttribute("videoUrl", "/video/video.mp4");
+        return "video";
     }
 }
