@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@Slf4j
+@Slf4j // 로깅을 간편하게 처리할 수 있도록 도와줌
 @Controller
-@RequiredArgsConstructor
+@RequiredArgsConstructor // final 이 포함된 클래스의 생성자를 자동으로 생성해 줌
 public class MemberController {
 
     private final MemberService memberService;
@@ -65,7 +65,7 @@ public class MemberController {
     // 삭제
     @GetMapping("/member/delete/{id}")
     public String deleteById(@PathVariable Long id){
-        memberService.deleteByid(id);
+        memberService.deleteById(id);
 
         return "redirect:/member/";
     }

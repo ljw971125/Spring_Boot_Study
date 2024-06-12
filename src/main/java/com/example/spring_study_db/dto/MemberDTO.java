@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+// entity 와 controller 의 데이터 전송을 위한 객체
 
 @Getter
 @Setter
@@ -25,9 +26,5 @@ public class MemberDTO {
         memberDTO.setMemberName(memberEntity.getMemberName());
 
         return memberDTO;
-
     }
-
-
-
 }
