@@ -32,4 +32,8 @@ public class BoardService {
             return null;
         }
     }
+    public void save(BoardDTO boardDTO){
+        BoardEntity boardEntity = BoardEntity.toBoardEntity(boardDTO);
+        boardRepository.save(boardEntity);
+    }
 }

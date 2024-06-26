@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -28,5 +29,17 @@ public class BoardController {
         BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
         return "boarddetail";
+    }
+
+    @GetMapping("/board/save")
+    public String saveForm(){
+        return "boardwrite";
+    }
+
+    @PostMapping("/board/save")
+    public String save(BoardDTO boardDTO) {
+        boardService.save(boardDTO);
+
+        return "redirect:/board/";
     }
 }
