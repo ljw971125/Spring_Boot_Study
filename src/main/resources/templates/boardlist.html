@@ -5,16 +5,19 @@
     <title>boardlist</title>
 </head>
 <body>
-<table>
+<table border="1">
     <tr>
-        <th>id</th>
-        <th>title</th>
+        <th>제목</th>
+        <th>삭제</th>
+        <th>조회수</th>
     </tr>
     <tr th:each="board: ${boardList}">
-        <td th:text="${board.id}"></td>
-        <td th:text="${board.title}"></td>
         <td>
-            <a th:href="@{|/board/${board.id}|}">조회</a>
+            <a th:href="@{|/board/${board.id}|}" th:text="${board.title}">조회</a>
+
+        </td>
+        <td>
+            <a th:href="@{|/board/delete/${board.id}|}">X</a>
         </td>
     </tr>
 </table>

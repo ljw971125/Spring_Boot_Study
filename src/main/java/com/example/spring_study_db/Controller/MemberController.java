@@ -14,13 +14,13 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor // final 이 포함된 클래스의 생성자를 자동으로 생성해 줌
 public class MemberController {
-
+    // 회원가입 페이지
     private final MemberService memberService;
     @GetMapping("/member/save")
     public String saveForm() {
         return "save";
     }
-
+    // 화원가입
     @PostMapping("/member/save")
     public String save(@ModelAttribute MemberDTO memberDTO) {
         System.out.println("MemberController.save");
@@ -29,12 +29,12 @@ public class MemberController {
 
         return "index";
     }
-
+    // 로그인 페이지
     @GetMapping("/member/login")
     public String loginFrom(){
         return "login";
     }
-
+    // 로그인
     @PostMapping("member/login") // session : 로그인 유지
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session){
         MemberDTO loginResult = memberService.login(memberDTO);
@@ -47,6 +47,7 @@ public class MemberController {
             return "login";
         }
     }
+    // 멤버 리스트
     @GetMapping("/member/")
     public String findAll(Model model){
         List<MemberDTO> memberDTOList = memberService.findAll();
@@ -69,6 +70,7 @@ public class MemberController {
 
         return "redirect:/member/";
     }
+    // 비디오
     @GetMapping("/video/")
     public String videoIndex(Model model) {
         log.debug("************** class = {}, function = {}", this.getClass().getName(), new Object(){}.getClass().getEnclosingMethod().getName());

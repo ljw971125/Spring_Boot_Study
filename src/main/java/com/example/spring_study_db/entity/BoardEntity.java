@@ -27,7 +27,6 @@ public class BoardEntity {
         boardEntity.id = boardDTO.getId();
         boardEntity.Title = boardDTO.getTitle();
         boardEntity.Content = boardDTO.getContent();
-
         return boardEntity;
 
     }
