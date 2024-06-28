@@ -5,6 +5,7 @@ import com.example.spring_study_db.entity.BoardEntity;
 import com.example.spring_study_db.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,5 +40,10 @@ public class BoardService {
 
     public void delete(Long id){
         boardRepository.deleteById(id);
+    }
+
+    @Transactional
+    public int updateView(Long id){
+        return boardRepository.updateView(id);
     }
 }

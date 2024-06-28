@@ -12,12 +12,14 @@ public class BoardDTO {
     private Long id;
     private String Title;
     private String Content;
+    private Long view;
 
     public static BoardDTO toBoardDTO(BoardEntity boardEntity){
         BoardDTO boardDTO = new BoardDTO();
         boardDTO.setId(boardEntity.getId());
         boardDTO.setTitle(boardEntity.getTitle());
         boardDTO.setContent(boardEntity.getContent());
+        boardDTO.setView(boardEntity.getView());
 
         return boardDTO;
     }

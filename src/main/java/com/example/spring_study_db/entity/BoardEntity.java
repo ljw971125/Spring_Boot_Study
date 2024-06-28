@@ -22,14 +22,16 @@ public class BoardEntity {
     @Column
     private String Content;
 
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private Long view;
+
     public static BoardEntity toBoardEntity(BoardDTO boardDTO){
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.id = boardDTO.getId();
         boardEntity.Title = boardDTO.getTitle();
         boardEntity.Content = boardDTO.getContent();
+        boardEntity.view = boardDTO.getView();
+
         return boardEntity;
-
     }
-
-
 }

@@ -14,10 +14,12 @@
     <tr th:each="board: ${boardList}">
         <td>
             <a th:href="@{|/board/${board.id}|}" th:text="${board.title}">조회</a>
-
         </td>
         <td>
             <a th:href="@{|/board/delete/${board.id}|}">X</a>
+        </td>
+        <td>
+            <a th:text="${board.view}"></a>
         </td>
     </tr>
 </table>
