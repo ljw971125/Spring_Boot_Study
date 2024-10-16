@@ -2,6 +2,7 @@ package com.example.spring_study_db.entity;
 
 import com.example.spring_study_db.dto.MemberDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
