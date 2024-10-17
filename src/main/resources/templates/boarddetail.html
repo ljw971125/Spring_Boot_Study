@@ -9,10 +9,12 @@
     <tr>
         <th>제목</th>
         <th>내용</th>
+        <th>이미지</th>
     </tr>
     <tr>
         <td th:text="${board.title}"></td>
         <td th:text="${board.content}"></td>
+        <td><img th:if="${board.imageUrl}" th:src="${board.imageUrl}" alt="image"></td>
     </tr>
 
 </table>
