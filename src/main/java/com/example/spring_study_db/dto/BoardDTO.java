@@ -12,7 +12,8 @@ public class BoardDTO {
     private Long id;
     private String Title;
     private String Content;
-    private Long view;
+    private int view;
+    private String imageUrl;
 
     public static BoardDTO toBoardDTO(BoardEntity boardEntity){
         BoardDTO boardDTO = new BoardDTO();
@@ -20,6 +21,7 @@ public class BoardDTO {
         boardDTO.setTitle(boardEntity.getTitle());
         boardDTO.setContent(boardEntity.getContent());
         boardDTO.setView(boardEntity.getView());
+        boardDTO.setImageUrl(boardEntity.getImageUrl());
 
         return boardDTO;
     }

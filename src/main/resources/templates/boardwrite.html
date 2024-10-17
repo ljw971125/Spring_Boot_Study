@@ -5,9 +5,10 @@
     <title>게시글 작성</title>
 </head>
 <body>
-<form action="/board/save" method="post">
+<form action="/board/save" method="post" enctype="multipart/form-data">
     제목: <input type="text" name="Title">
     내용: <input type="text" name="Content">
+    파일: <input type="file" name="file">
     <input type="submit" value="작성완료">
 </form>
 

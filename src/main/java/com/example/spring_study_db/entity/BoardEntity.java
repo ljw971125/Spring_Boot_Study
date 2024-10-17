@@ -22,8 +22,11 @@ public class BoardEntity {
     @Column
     private String Content;
 
-    @Column(columnDefinition = "integer default 0", nullable = false)
-    private Long view;
+    @Column(columnDefinition = "integer default 0")
+    private int view = 0;
+
+    @Column
+    private String imageUrl;
 
     public static BoardEntity toBoardEntity(BoardDTO boardDTO){
         BoardEntity boardEntity = new BoardEntity();
@@ -31,6 +34,7 @@ public class BoardEntity {
         boardEntity.Title = boardDTO.getTitle();
         boardEntity.Content = boardDTO.getContent();
         boardEntity.view = boardDTO.getView();
+        boardEntity.imageUrl = boardDTO.getImageUrl();
 
         return boardEntity;
     }
