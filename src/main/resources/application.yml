@@ -9,6 +9,11 @@ spring:
     password: 1234
   thymeleaf:
     cache: false
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
 
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -22,4 +27,4 @@ server:
 
 
 file:
-  upload-dir: /uploads
+  upload-dir: src/main/resources/static/uploads
