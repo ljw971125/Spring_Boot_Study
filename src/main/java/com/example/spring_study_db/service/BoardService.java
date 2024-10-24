@@ -67,11 +67,24 @@ public class BoardService {
                 Path path = Paths.get(uploadDir, a + "_" + fileName);
                 Files.createDirectories(path.getParent());
                 Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-                boardDTO.setImageUrl("/uploads/" + a + "_" +fileName);
+                String imageUrl = "/uploads/" + a + "_" + fileName;
+                boardDTO.setImageUrl(imageUrl);
+                return imageUrl;
             } catch (IOException e){
                 e.printStackTrace();
             }
         }
-        return "redirect:/board/";
+        return null;
+    }
+    public void update(BoardDTO boardDTO){
+        BoardEntity boardEntity = boardRepository.findById(boardDTO.getId())
+                        .orElseThrow(() -> new RuntimeException("게시글을 찾을 수 없습니다."));
+
+        boardEntity.setTitle(boardDTO.getTitle());
+        boardEntity.setContent(boardDTO.getContent());
+        boardEntity.setImageUrl(boardDTO.getImageUrl());
+
+        boardRepository.save(boardEntity);
+
     }
 }

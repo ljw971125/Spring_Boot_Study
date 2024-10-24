@@ -51,4 +51,26 @@ public class BoardController {
         boardService.save(boardDTO);
         return "redirect:/board/";
     }
+
+    @GetMapping("/board/edit/{id}")
+    public String editPostForm(@PathVariable Long id, Model model){
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board", boardDTO);
+        return "boardedit";
+    }
+    @PostMapping("/board/update")
+    public String updatePost(BoardDTO boardDTO, @RequestParam("file") MultipartFile file){
+        String imageUrl = boardService.savePost(boardDTO, file);
+        if (imageUrl != null) {
+            boardDTO.setImageUrl(imageUrl);
+        } else {
+            BoardDTO existingBoardDTO = boardService.findById(boardDTO.getId());
+            if (existingBoardDTO.getImageUrl() != null) {
+                boardDTO.setImageUrl(existingBoardDTO.getImageUrl());
+                System.out.println("Existing Image URL: " + existingBoardDTO.getImageUrl()); // 디버그 로그 추가
+            }
+        }
+        boardService.update(boardDTO);
+        return "redirect:/board/" + boardDTO.getId();
+    }
 }
