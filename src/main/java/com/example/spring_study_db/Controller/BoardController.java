@@ -39,7 +39,6 @@ public class BoardController {
         return "redirect:/board/";
     }
 
-    @Secured("ROLE_USER")
     @GetMapping("/board/save")
     public String saveForm(){
         return "boardwrite";

@@ -6,6 +6,7 @@
 </head>
 <body>
 <form action="/board/update" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     <input type="hidden" name="id" th:value="${board.id}">
     제목: <input type="text" name="title" th:value="${board.title}"> <br>
     내용: <input type="text" name="content" th:value="${board.content}"> <br>

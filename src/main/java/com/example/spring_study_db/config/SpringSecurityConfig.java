@@ -25,12 +25,12 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()
-//                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .csrf(csrf -> csrf
+                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
             )
             .authorizeHttpRequests(authorize -> authorize
                     .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll()
-                    .requestMatchers("/board/**").authenticated()
+                    .requestMatchers("/").authenticated()
                     .anyRequest().permitAll()
             )
             .formLogin(login -> login	// form 방식 로그인 사용
