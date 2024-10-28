@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="_csrf" content="${_csrf.token}">
+    <meta name="_csrf_header" content="${_csrf.headerName}">
+    <!-- 다른 공통 메타 태그들 -->
+</head>
+<body>
+<div th:fragment="header"></div>
+<div th:replace="~{::header}"></div>
+<!-- 본문 내용 -->
+</body>
+</html>

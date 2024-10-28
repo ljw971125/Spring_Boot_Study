@@ -28,3 +28,9 @@ server:
 
 file:
   upload-dir: src/main/resources/static/uploads
+
+logging:
+  level:
+    org:
+      springframework:
+        security : DEBUG

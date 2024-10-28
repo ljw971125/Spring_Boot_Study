@@ -1,3 +1,7 @@
+var token = $("meta[]name='_csrf'").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content")
+
+
 function ajax_test1(){
     const xhr = new XMLHttpRequest();
 
@@ -5,9 +9,10 @@ function ajax_test1(){
     // 첫번째 매개변수 : 'post', 'get'
     // 두번째 매개변수 : 이동한 url
     // 세번째 매개변수 : true - 비동기 접근, false - 동기 접근
-    xhr.open('post', '/test/test1', true);
+    xhr.open('post', '/ajax/test1', true);
     // 컨트롤러로 이동 시 데이터 전달 방식 지정
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader(header,token)
     xhr.send();
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4){
@@ -23,7 +28,7 @@ function ajax_test1(){
 function ajax_test2(){
     const xhr = new XMLHttpRequest();
 
-    xhr.open('post', '/test/test2', true);
+    xhr.open('post', '/ajax/test2', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send('name=java&age=20');
     xhr.onreadystatechange = function (){
@@ -39,7 +44,7 @@ function ajax_test2(){
 
 function ajax_test3(){
     const xhr = new XMLHttpRequest();
-    xhr.open('post' , '/test/test3', true);
+    xhr.open('post' , '/ajax/test3', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send('name=java&age=20');
     xhr.onreadystatechange = function(){
@@ -58,7 +63,7 @@ function ajax_test3(){
 
 function ajax_test4(){
     const xhr = new XMLHttpRequest();
-    xhr.open('post' , '/test/test4', true);
+    xhr.open('post' , '/ajax/test4', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send();
     xhr.onreadystatechange = function(){
@@ -81,7 +86,7 @@ function ajax_test4(){
 
 function ajax_test5(){
     const xhr = new XMLHttpRequest();
-    xhr.open('post', '/test/test5', true);
+    xhr.open('post', '/ajax/test5', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send();
     xhr.onreadystatechange = function(){

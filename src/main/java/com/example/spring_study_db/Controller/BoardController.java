@@ -3,7 +3,7 @@ package com.example.spring_study_db.Controller;
 import com.example.spring_study_db.dto.BoardDTO;
 import com.example.spring_study_db.service.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,20 +33,21 @@ public class BoardController {
         return "boarddetail";
     }
 
-    @GetMapping("/board/save")
-    public String saveForm(){
-        return "boardwrite";
-    }
-
-
     @GetMapping("/board/delete/{id}")
     public String delete(@PathVariable Long id) {
         boardService.delete(id);
         return "redirect:/board/";
     }
 
+    @Secured("ROLE_USER")
+    @GetMapping("/board/save")
+    public String saveForm(){
+        return "boardwrite";
+    }
+
+    @Secured("ROLE_USER")
     @PostMapping("/board/save")
-    public String savePost(BoardDTO boardDTO, @RequestParam("file") MultipartFile file){
+    public String savePost(BoardDTO boardDTO, @RequestParam("file") MultipartFile file, String csrfToken){
         boardService.savePost(boardDTO, file);
         boardService.save(boardDTO);
         return "redirect:/board/";

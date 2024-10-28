@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>게시글 작성</title>
+    <meta name="_csrf" content="${_csrf.token}">
+    <meta name="_csrf_header" content="${_csrf.headerName}">
+
 </head>
 <body>
-<form action="/board/save" method="post" enctype="multipart/form-data">
-    제목: <input type="text" name="Title">
-    내용: <input type="text" name="Content">
-    파일: <input type="file" name="file">
-    <input type="submit" value="작성완료">
-</form>
-
+    <header th:replace="layout :: header"></header>
+    <form action="/board/save" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+        제목: <input type="text" name="Title">
+        내용: <input type="text" name="Content">
+        파일: <input type="file" name="file">
+        <input type="submit" value="작성완료">
+    </form>
 </body>
 </html>

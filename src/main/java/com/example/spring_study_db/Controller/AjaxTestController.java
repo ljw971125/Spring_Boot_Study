@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/ajax")
 public class AjaxTestController {
     @GetMapping("/test")
     public String test(){
