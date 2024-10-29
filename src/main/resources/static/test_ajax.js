@@ -1,6 +1,5 @@
-var token = $("meta[]name='_csrf'").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content")
-
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
 
 function ajax_test1(){
     const xhr = new XMLHttpRequest();
@@ -30,6 +29,7 @@ function ajax_test2(){
 
     xhr.open('post', '/ajax/test2', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader(header,token)
     xhr.send('name=java&age=20');
     xhr.onreadystatechange = function (){
         if(xhr.readyState == 4){
@@ -46,6 +46,7 @@ function ajax_test3(){
     const xhr = new XMLHttpRequest();
     xhr.open('post' , '/ajax/test3', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader(header,token)
     xhr.send('name=java&age=20');
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4){
@@ -65,6 +66,7 @@ function ajax_test4(){
     const xhr = new XMLHttpRequest();
     xhr.open('post' , '/ajax/test4', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader(header,token)
     xhr.send();
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4){
@@ -88,6 +90,7 @@ function ajax_test5(){
     const xhr = new XMLHttpRequest();
     xhr.open('post', '/ajax/test5', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader(header,token)
     xhr.send();
     xhr.onreadystatechange = function(){
         if(xhr.readyState == 4){
